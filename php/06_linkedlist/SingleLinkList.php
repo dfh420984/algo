@@ -180,7 +180,7 @@ class SingleLinkList {
             return false;
         }
         $fast = $slow->next; // 初始时，快指针从头节点开始走2步
-        while ($fast != null and $slow != null ) { //如果没环，走到链尾就结束循环
+        while ($fast != null && $slow != null ) { //如果没环，走到链尾就结束循环
             if ($fast == $slow) { //快慢指针相遇，说明有环
                 return true;
             }
