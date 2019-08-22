@@ -1,6 +1,7 @@
 package linkedlist
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -45,4 +46,16 @@ func TestDeleteNode(t *testing.T) {
 
 	t.Log(l.DeleteNode(l.head.next.next))
 	l.Print()
+}
+
+func TestIsLinkPalindrome(t *testing.T) {
+	l := NewLinkedList()
+	l.InsertTotail(1)
+	l.InsertTotail(2)
+	l.InsertTotail(3)
+	l.InsertTotail(2)
+	l.InsertTotail(1)
+	l.Print()
+	res := l.IsLinkPalindrome()
+	fmt.Println(res)
 }

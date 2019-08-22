@@ -264,7 +264,7 @@ class SingleLinkList {
             $midNode = $next;
         }
         // 开始逐个比较
-        while ($slow != null) {
+        while ($slow != null && $pre != null ) {
             if ($slow->data != $pre->data) {
                 return false;
             }

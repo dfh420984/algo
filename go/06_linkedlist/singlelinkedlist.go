@@ -141,6 +141,45 @@ func (this *LinkedList) ReverseLinkList(head *LinkNode) *LinkNode {
 	return pre
 }
 
+//判断链表是否是回文
+func (this *LinkedList) IsLinkPalindrome() bool {
+	//定义快慢两个节点指针
+	var slow *LinkNode = this.head.next
+	var fast *LinkNode = this.head.next
+	var mid *LinkNode = nil  //中间点
+	var pre *LinkNode = nil  //前一个节点
+	var next *LinkNode = nil //后一个节点
+
+	//找到中间点
+	for fast != nil && fast.next != nil && fast.next.next != nil {
+		fast = fast.next.next
+		mid = slow.next
+	}
+
+	//判断链表是否是偶数
+	if int(this.length)%2 == 0 {
+		mid = mid.next
+	}
+
+	//反转链表
+	for mid != nil {
+		next = mid.next
+		mid.next = pre
+		pre = mid
+		mid = next
+	}
+
+	//开始比较
+	for slow != nil && pre != nil {
+		if slow.data != pre.data {
+			return false
+		}
+		slow = slow.next
+		pre = pre.next
+	}
+	return true
+}
+
 //打印链表
 func (this *LinkedList) Print() {
 	cur := this.head.next
