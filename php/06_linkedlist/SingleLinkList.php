@@ -217,4 +217,60 @@ class SingleLinkList {
         $this->insertNodeAfter($node6, $node7);
         $node7->next = $node0;
     }
+
+    /**
+     * @param $head 第一个节点
+     * @author duanfuhao@smzdm.com
+     * @date 2019/8/22
+     */
+    function reverseLinkedList($head) {
+        $pre = null; //指向前一个节点
+        $next = null; //下一个节点
+        while ($head != null) {
+            $next = $head->next; //下一个节点
+            $head->next = $pre;  //修改节点指向位反转后的前节点
+            $pre = $head; //将pre指向当前方转后的节点
+            $head = $next; //head指针后移，开始下一轮循环反转
+        }
+        return $pre;
+    }
+
+    //判断链表中保存的字符串是否是回文
+    function isLinkPalindrome($list) {
+        if ($list->getLength() <= 1) {
+            return false;
+        }
+        //定义快慢两个指针
+        $slow = $list->head->next;
+        $fast = $list->head->next;
+
+        $midNode = null; //中间点
+        $pre = null; //反转后链表对像
+
+        // 找单链表中点
+        while ($fast != null && $fast->next != null  && $fast->next->next != null) {
+            $fast = $fast->next->next;
+            $midNode = $slow->next;
+        }
+        //如果是偶数
+        if ($this->getLength() % 2 == 0) {
+            $midNode = $midNode->next;
+        }
+        //反转后半部分链表
+        while ($midNode != null) {
+            $next = $midNode->next;
+            $midNode->next = $pre;
+            $pre = $midNode;
+            $midNode = $next;
+        }
+        // 开始逐个比较
+        while ($slow != null) {
+            if ($slow->data != $pre->data) {
+                return false;
+            }
+            $slow = $slow->next;
+            $pre = $pre->next;
+        }
+        return true;
+    }
 }
