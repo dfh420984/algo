@@ -1,6 +1,8 @@
 package linkedlist
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestInserToHead(t *testing.T) {
 	l := NewLinkedList()
@@ -8,6 +10,8 @@ func TestInserToHead(t *testing.T) {
 		l.InserToHead(i + 1)
 	}
 	l.Print()
+	reverse := l.ReverseLinkList(l.head.next)
+	l.PrintNode(reverse)
 }
 
 func TestInsertToTail(t *testing.T) {
@@ -23,10 +27,10 @@ func TestSearchNode(t *testing.T) {
 	for i := 0; i < 5; i++ {
 		l.InsertTotail(i + 1)
 	}
-	t.Log(l.searchNode(0))
-	t.Log(l.searchNode(2))
-	t.Log(l.searchNode(4))
-	t.Log(l.searchNode(6))
+	t.Log(l.SearchNode(0))
+	t.Log(l.SearchNode(2))
+	t.Log(l.SearchNode(4))
+	t.Log(l.SearchNode(6))
 }
 
 func TestDeleteNode(t *testing.T) {

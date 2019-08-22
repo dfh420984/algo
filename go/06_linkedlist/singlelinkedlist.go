@@ -93,7 +93,7 @@ func (this *LinkedList) InsertTotail(v interface{}) bool {
 }
 
 //根据下标查找节点
-func (this *LinkedList) searchNode(index uint) *LinkNode {
+func (this *LinkedList) SearchNode(index uint) *LinkNode {
 	if index >= this.length {
 		return nil
 	}
@@ -128,6 +128,19 @@ func (this *LinkedList) DeleteNode(p *LinkNode) bool {
 	return true
 }
 
+//链表反转
+func (this *LinkedList) ReverseLinkList(head *LinkNode) *LinkNode {
+	var pre *LinkNode = nil
+	var next *LinkNode = nil
+	for head != nil {
+		next = head.next
+		head.next = pre
+		pre = head
+		head = next
+	}
+	return pre
+}
+
 //打印链表
 func (this *LinkedList) Print() {
 	cur := this.head.next
@@ -136,6 +149,18 @@ func (this *LinkedList) Print() {
 		format += fmt.Sprintf("|%+v", cur.data)
 		cur = cur.next
 		if cur != nil {
+			format += "->"
+		}
+	}
+	fmt.Println(format)
+}
+
+func (this *LinkedList) PrintNode(head *LinkNode) {
+	var format string = ""
+	for head != nil {
+		format += fmt.Sprintf("|%+v", head.data)
+		head = head.next
+		if head != nil {
 			format += "->"
 		}
 	}
