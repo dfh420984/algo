@@ -59,3 +59,22 @@ func TestIsLinkPalindrome(t *testing.T) {
 	res := l.IsLinkPalindrome()
 	fmt.Println(res)
 }
+
+func TestMergeLinkList(t *testing.T) {
+	l0 := NewLinkedList()
+	l1 := NewLinkedList()
+	l1.InsertTotail(1)
+	l1.InsertTotail(3)
+	l1.InsertTotail(5)
+	l1.Print()
+
+	l2 := NewLinkedList()
+	l2.InsertTotail(2)
+	l2.InsertTotail(4)
+	l2.InsertTotail(6)
+	l2.Print()
+
+	l0 = l0.MergeLinkList(l0, l1, l2)
+	l0.Print()
+
+}

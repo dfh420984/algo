@@ -180,6 +180,39 @@ func (this *LinkedList) IsLinkPalindrome() bool {
 	return true
 }
 
+//合并两个有序链表
+func (this *LinkedList) MergeLinkList(l0, l1, l2 *LinkedList) *LinkedList {
+	if l1 == nil && l1.head == nil && l1.head.next == nil {
+		return l2
+	}
+	if l2 == nil && l2.head == nil && l2.head.next == nil {
+		return l1
+	}
+	//初始化指针，并指向表头
+	cur := l0.head
+	cur1 := l1.head.next
+	cur2 := l2.head.next
+	//开始循环遍历两个链表数据，数据小的插入在新链表后面
+	for cur1 != nil && cur2 != nil {
+		if cur1.data.(int) < cur2.data.(int) {
+			cur.next = cur1
+			cur1 = cur1.next
+		} else {
+			cur.next = cur2
+			cur2 = cur2.next
+		}
+		cur = cur.next
+	}
+	//循环完毕后，链表剩余的节点插入
+	if cur1 != nil {
+		cur.next = cur1
+	}
+	if cur2 != nil {
+		cur.next = cur2
+	}
+	return l0
+}
+
 //打印链表
 func (this *LinkedList) Print() {
 	cur := this.head.next
