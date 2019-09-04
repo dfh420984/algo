@@ -71,7 +71,7 @@ function selectSort($arr) {
     $len = count($arr);
     for ($i = 0; $i < $len; $i++) {
         $min = $i; //假设最小值下标
-        for ($j = $i; $j < $len; $j++) {
+        for ($j = $i + 1; $j < $len; $j++) {
             if ($arr[$min] > $arr[$j]) {
                 $min = $j;
             }
