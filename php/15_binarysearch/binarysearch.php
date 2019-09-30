@@ -22,3 +22,19 @@ function binarysearch($arr,$val) {
     }
     return -1;
 }
+
+function bsearch($arr,$val) {
+    return bsearch_rec($arr,$val,0,count($arr) - 1);
+}
+
+function bsearch_rec($arr,$val,$l,$h) {
+    if ($l > $h) return -1;
+    $mid = int($l + ($h - $l) / 2);
+    if ($arr[$mid] < $val) {
+        bsearch_rec($arr,$val,$mid + 1,$h);
+    } elseif ($arr[$mid] > $val) {
+        bsearch_rec($arr,$val,$l,$mid - 1);
+    } else {
+        return $mid;
+    }
+}
