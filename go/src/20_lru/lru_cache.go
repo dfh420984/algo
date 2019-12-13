@@ -96,6 +96,7 @@ func (lr *lruCache) delNode() {
 	prev := &lr.node[hash(lr.head.key)]
 	tmp := prev.hnext
 
+	//找到头节点
 	for tmp != nil && tmp.key != lr.head.key {
 		prev = tmp
 		tmp = tmp.hnext
