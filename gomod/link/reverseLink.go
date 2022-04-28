@@ -114,10 +114,10 @@ func MergeSortLinkList(l0, l1, l2 *LinkNode) *LinkNode {
 		}
 		cur = cur.next
 	}
-	if cur1 != nil {
+	for cur1 != nil {
 		cur.next = cur1
 	}
-	if cur2 != nil {
+	for cur2 != nil {
 		cur.next = cur2
 	}
 	return l0.next
